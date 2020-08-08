@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Add customer</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<style>
+    table, h2 {
+        margin: 100px auto 100px auto;
+        width: 50%;
+        padding: 30px;
+    }
+</style>
+<body>
+<form action="#" th:action="@{/customer/add}" th:object="${customer}" method="post">
+    <h2>Adding a new customer</h2>
+    <table>
+        <tbody>
+        <td><input type="hidden" th:field="*{id}" /></td>
+            <tr>
+                <td><label>First name: </label></td>
+                <td><input type="text" th:field="*{firstName}" /></td>
+            </tr>
+            <tr>
+                <td><label>Last name: </label></td>
+                <td><input type="text" th:field="*{lastName}" /></td>
+            </tr>
+            <tr>
+                <td><label>email: </label></td>
+                <td><input type="text" th:field="*{email}" /></td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" class="btn btn-success" value="Submit" />
+                    <a href="/customer/list" class="btn btn-danger">Cancel</a>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>
