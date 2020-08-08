@@ -1,10 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Customer list</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
+<style>
+    h2 {
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 100px;
+        width: 8em;
+    }
+</style>
 <body>
-$END$
+<div><h2>Customer list</h2></div>
+<div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th> First name </th>
+            <th> Last name </th>
+            <th> e-mail </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="customer : ${customers}">
+            <td><span th:text="${customer.firstName}"> First name </span></td>
+            <td><span th:text="${customer.lastName}"> Last name </span></td>
+            <td><span th:text="${customer.email}"> e-mail </span></td>
+            <td>
+                <a th:href="@{'/customer/'+${customer.id}}"> Edit </a> |
+                <a th:href="@{'/customer/delete/'+${customer.id}}"> Delete </a>
+            </td>
+        </tr> <tr></tr>
+        <tr>
+            <td><input type="button" value="Add new" onclick="window.location.href='add';return false;"
+                       class="btn btn-success"></td>
+        </tr>
+        </tbody>
+
+    </table>
+
+</div>
+
 </body>
 </html>
